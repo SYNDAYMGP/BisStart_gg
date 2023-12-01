@@ -1,19 +1,17 @@
-#---------подчищаем лишние------>(ток гл и подгл)-----------
-filename = '1.txt'
-with open(filename, 'r') as file:
-    lines = file.readlines()
-cleaned_lines = []
-found_digit = False
-for line in lines:
-    # Проверяем, содержит ли строка хотя бы одну цифру
-    if any(char.isdigit() for char in line):
-        found_digit = True
-    # Если уже встретили цифру, прекращаем очистку строк
-    if found_digit:
-        cleaned_lines.append(line)
-# Записываем очищенные строки обратно в файл
-with open(filename, 'w') as file:
-    file.writelines(cleaned_lines)
+#---------подчищаем лишние------>(всё что до первой гл1)-----------
+with open('1.txt', 'r', encoding='cp1251') as f:
+    lines = f.readlines()
+index = -1
+for i, line in enumerate(lines):
+    if "1.1" in line:
+        index = i
+        break
+if index > 1:
+    del lines[:index-2]
+with open('1.txt', 'w') as f:
+    f.writelines(lines)
+   
+
 
 
 
