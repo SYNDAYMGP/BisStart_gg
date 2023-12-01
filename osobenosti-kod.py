@@ -10,7 +10,41 @@ if index > 1:
     del lines[:index-2]
 with open('1.txt', 'w') as f:
     f.writelines(lines)
-   
+
+
+
+
+
+#---------подчищаем лишние------>(всё что после гл(6.2))-----------
+
+# Открываем файл для чтения
+with open('1.txt', 'r') as file:
+    lines = file.readlines()
+# Ищем строку с числом 6.2
+index_6_2 = -1
+for i, line in enumerate(lines):
+    if '6.2' in line:
+        index_6_2 = i
+        break
+# Если строка с числом 6.2 найдена, ищем следующую пустую строку
+if index_6_2 != -1:
+    index_empty_line = -1
+    for i in range(index_6_2 + 1, len(lines)):
+        if lines[i].strip() == '':
+            index_empty_line = i
+            break
+    # Если пустая строка найдена, удаляем все строки после неё
+    if index_empty_line != -1:
+        lines = lines[:index_empty_line]
+
+        # Записываем изменения обратно в файл
+        with open('1.txt', 'w') as file:
+            file.writelines(lines)
+            print("Операция успешно выполнена.")
+    else:
+        print("Пустая строка после строки с числом 6.2 не найдена.")
+else:
+    print("Строка с числом 6.2 не найдена в файле.")
 
 
 
