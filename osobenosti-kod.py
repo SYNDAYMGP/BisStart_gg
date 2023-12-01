@@ -1,5 +1,26 @@
+#---------узнаём кодировку нашего файла-----------
+import chardet
+
+# Определяем кодировку файла
+def detect_encoding(file_path):
+    with open(file_path, 'rb') as file:
+        result = chardet.detect(file.read())
+    return result['encoding']
+# Путь к вашему файлу
+file_path = '1.txt'
+# Определяем кодировку
+x = detect_encoding(file_path)
+# Выводим результат
+print(f"Кодировка файла {file_path}: {x}")
+
+
+
+
+
+
+
 #---------подчищаем лишние------>(всё что до первой гл1)-----------
-with open('1.txt', 'r', encoding='cp1251') as f:
+with open('1.txt', 'r', encoding=x) as f:
     lines = f.readlines()
 index = -1
 for i, line in enumerate(lines):
@@ -74,14 +95,3 @@ with open('1.txt', 'r', encoding=x) as file:
 # Выводим результат
 for i, variable in enumerate(ww_vars, 1):
     print(f"ww_vars[{i-1}]:\n{variable}")
-
-
-
-
-
-
-
-
-
-
-
