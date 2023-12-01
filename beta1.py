@@ -97,10 +97,12 @@ def handle_text(message):
             break
     if index > 1:
         del lines[:index-2]
+        time.sleep(15)
     with open('1.txt', 'w') as f:
         f.writelines(lines)
     #---------подчищаем лишние------>(всё что после гл(6.2))-----------
     # Открываем файл для чтения
+    time.sleep(15)
     with open('1.txt', 'r') as file:
         lines = file.readlines()
     # Ищем строку с числом 6.2
@@ -119,6 +121,7 @@ def handle_text(message):
         # Если пустая строка найдена, удаляем все строки после неё
         if index_empty_line != -1:
             lines = lines[:index_empty_line]
+            time.sleep(15)
     
             # Записываем изменения обратно в файл
             with open('1.txt', 'w') as file:
@@ -129,7 +132,9 @@ def handle_text(message):
     else:
         print("Строка с числом 6.2 не найдена в файле.")
     #--------------ЗАПИСЬ ГЛ И ПОДГЛ В ПЕРЕМЕННЫЕ--------------
+    
     # Открываем файл для чтения
+    time.sleep(15)
     with open('1.txt', 'r') as file:
         # Инициализируем переменные
         current_variable = ""
@@ -156,7 +161,7 @@ def handle_text(message):
     
     
     
-    
+    time.sleep(15)
     #####1гл   #####################################################
     #####1гл   #####################################################
     #####1гл   #####################################################
