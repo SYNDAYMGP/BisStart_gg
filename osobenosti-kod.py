@@ -1,23 +1,3 @@
-#---------узнаём кодировку нашего файла-----------
-import chardet
-
-# Определяем кодировку файла
-def detect_encoding(file_path):
-    with open(file_path, 'rb') as file:
-        result = chardet.detect(file.read())
-    return result['encoding']
-# Путь к вашему файлу
-file_path = '1.txt'
-# Определяем кодировку
-x = detect_encoding(file_path)
-# Выводим результат
-print(f"Кодировка файла {file_path}: {x}")
-
-
-
-
-
-
 
 #---------подчищаем лишние------>(всё что до первой гл1)-----------
 with open('1.txt', 'r', encoding=x) as f:
@@ -95,3 +75,19 @@ with open('1.txt', 'r', encoding=x) as file:
 # Выводим результат
 for i, variable in enumerate(ww_vars, 1):
     print(f"ww_vars[{i-1}]:\n{variable}")
+
+
+
+
+
+#-----СОЕДИНЕНИЕ ШАБЛОНА С РЕФЕРАТОМ
+from docx import Document
+
+# Открываем файлы
+doc = Document('1.docx')
+with open('2.txt', 'r') as file:
+    text = file.read()
+# Добавляем текст в документ
+doc.add_paragraph(text)
+# Сохраняем изменения
+doc.save('1.docx')
