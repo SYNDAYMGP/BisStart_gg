@@ -1,3 +1,91 @@
+#-----объеденённое----подчищение------>
+
+# Часть 1: Удаление строк до пустой строки после строки с числом 6.2
+with open('1.txt', 'r', encoding='utf-8') as f:
+    lines = f.readlines()
+index_6_2 = next((i for i, line in enumerate(lines) if '6.2' in line), -1)
+if index_6_2 != -1:
+    index_empty_line = next(
+        (i for i, line in enumerate(lines[index_6_2 + 1:], start=index_6_2 + 1) if not line.strip()), -1)
+    if index_empty_line != -1:
+        with open('1.txt', 'w', encoding='utf-8') as f:
+            f.writelines(lines[:index_empty_line])
+            print("Операция успешно выполнена.")
+    else:
+        print("Пустая строка после строки с числом 6.2 не найдена.")
+else:
+    print("Строка с числом 6.2 не найдена в файле.")
+time.sleep(3)
+# Часть 2: Очистка строк и запись обратно в файл
+with open('1.txt', 'r', encoding='utf-8') as file:
+    lines = file.readlines()
+cleaned_lines = []
+found_digit = False
+for line in lines:
+    if any(char.isdigit() for char in line):
+        found_digit = True
+    if found_digit:
+        cleaned_lines.append(line)
+with open('1.txt', 'w', encoding='utf-8') as file:
+    file.writelines(cleaned_lines)
+time.sleep(3)
+# Часть 3: Обработка переменных
+with open('1.txt', 'r', encoding='utf-8') as file:
+    lines = file.readlines()
+current_variable = ""
+ww_vars = []
+for line in lines:
+    if any(char.isdigit() for char in line):
+        if current_variable:
+            ww_vars.append(current_variable)
+        current_variable = line
+    else:
+        current_variable += line
+if current_variable:
+    ww_vars.append(current_variable)
+# Вывод результатов
+for i, variable in enumerate(ww_vars, 1):
+    print(f"ww_vars[{i-1}]:\n{variable}")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 #---------подчищаем лишние------>(всё что до первой гл1)-----------
 with open('1.txt', 'r', encoding=x) as f:
