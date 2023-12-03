@@ -91,3 +91,39 @@ with open('2.txt', 'r') as file:
 doc.add_paragraph(text)
 # Сохраняем изменения
 doc.save('1.docx')
+
+
+
+
+
+
+
+
+#-----СОЕДИНЕНИЕ ШАБЛОНА С РЕФЕРАТОМ + Сохраняем документ с изменениями шрифта
+import docx
+from docx.shared import Pt
+from docx import Document
+import chardet
+# Открываем файлы с явным указанием кодировки (в данном случае UTF-8)
+with open('2.txt', 'rb') as file:
+    result = chardet.detect(file.read())
+# Открываем файлы с определенной кодировкой
+with open('2.txt', 'r', encoding=result['encoding']) as file:
+    text = file.read()
+# Добавляем текст в документ
+doc = Document('shablon.docx')
+doc.add_paragraph(text)
+# Сохраняем изменения
+doc.save('shablonDOP.docx')
+# Открываем документ с добавленным текстом
+document = docx.Document('shablonDOP.docx')
+# Изменяем стиль по умолчанию для всего документа
+for paragraph in document.paragraphs:
+    for run in paragraph.runs:
+        font = run.font
+        font.name = 'Times New Roman'
+        font.size = Pt(14)
+# Сохраняем документ с изменениями шрифта
+document.save('REFERAT.docx')
+print('Шрифт в файле успешно изменен на Times New Roman 14pt')
+
