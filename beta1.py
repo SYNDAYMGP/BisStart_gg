@@ -1,5 +1,4 @@
-06/12/2023
-#-----------------06.12.23
+#-----------------04.12.23
 #-----------------rabotaet cmeste s shablonom i tmn rm 14
 import os
 import re
@@ -19,7 +18,6 @@ openai.api_key = ""
 @bot.message_handler(content_types=["text"]) 
 def handle_text(message):
     bot.send_message(message.chat.id, 'Идёт генерация дождитесь ответа............')  
-    model_engine11 = "text-davinci-003"
     model_engine = "gpt-3.5-turbo"
     with open('1.txt', 'w') as file:
         file.write('')
@@ -36,15 +34,15 @@ def handle_text(message):
     time.sleep(367)
     ll2 = ""
     prompt = "составь мне план (структуру) для моего доклада на тему (" + text + ") план должен состоять из шести глав ,а главы должны состоять из двух под глав, в ответ ты должен записать только название глав и название подглав к ним без каких либо твоих пояснений и дополнений , не забудь пронумеровать главы вот так (1, 2, 3, 4, 5, 6) , а под главы пронумеруй так (1.1 1.2, 2.1 2.2 , 3.1 3.2, 4.1 4.2, 5.1 5.2 , 6.1 6.2) , Первая глава и подглавы 1.1 и 1.2 должны быть вводной частью данного доклада и состоять из актуальности рассматриваемой темы и её проблематики, а шестая глава и подглавы 6.1 6.2 должны быть заключением данного доклада и подводить итоги"
-    response = openai.Completion.create(
-    engine=model_engine11,
-    prompt=prompt,
-    max_tokens=2750,
-    n=1,
-    stop=None,
-    temperature=0.5,
+    response = openai.ChatCompletion.create(
+        model=model_engine,
+        messages=[
+            {"role": "system", "content": "You are a helpful assistant."},
+            {"role": "user", "content": prompt}
+        ]
     )
-    ll2 = response.choices[0].text
+    if response['choices']:
+        ll2 = response['choices'][0]['message']['content']
     print(ll2)
     time.sleep(367)
     #================СОЗДАНИЕ ВЫСШЕГО ВОПРОСА===========================================
@@ -412,19 +410,4 @@ bot.polling(none_stop=True, interval=0)
 #-----------------rabotaet cmeste s shablonom i tmn rm 14
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-    
-    
+#
