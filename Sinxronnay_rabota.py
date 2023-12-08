@@ -18,7 +18,7 @@ def main():
     from docx import Document
     import chardet
 
-    openai.api_key = "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"
+    openai.api_key = ""
     model_engine = "gpt-3.5-turbo"
     text = 'Госдума в РФ'
     ll2 = ""
