@@ -72,4 +72,43 @@ print(ll40)
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+import os
+import re
+import openai
+import telebot
+import time
+import docx
+from docx.shared import Pt
+from docx import Document
+import chardet
+
+
+
+
+#(((  БЛОК КОД DRF )))
+def main(ww_vars, text, model_engine):
+    openai.api_key = "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"
+    #####1гл   #####################################################
+    #####1гл   #####################################################
+    #####1гл   #####################################################
+    ll4 = ""
+    prompt = "расскажи по подробнее про (" + ww_vars[0] + ww_vars[1] + ww_vars[2] + ") , ответ должен быть расписан очень подробно и расказывать всю суть , по надобности приводить примеры того или иного, ответ дай в стиле реферата ,то есть ответ должен представлять чать реферата (" + text + ") "
+    response = openai.ChatCompletion.create(
+        model=model_engine,
+        messages=[
+            {"role": "system", "content": "You are a helpful assistant."},
+            {"role": "user", "content": prompt}
+        ]
+    )
+    if response['choices']:
+        ll4 = response['choices'][0]['message']['content']
+    print(ll4)
+    return ll4
+    ##########################################################
+    ##########################################################
+    ##########################################################
+
+
+
+
 
