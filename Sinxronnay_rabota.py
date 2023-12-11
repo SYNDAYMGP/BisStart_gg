@@ -1,4 +1,4 @@
-
+0
 #(((--ОСНОВНОЙ КОД--TG)))
 
 import pyautogui
@@ -87,7 +87,7 @@ import chardet
 
 #(((  БЛОК КОД DRF )))
 def main(ww_vars, text, model_engine):
-    openai.api_key = "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"
+    openai.api_key = ""
     #####1гл   #####################################################
     #####1гл   #####################################################
     #####1гл   #####################################################
